@@ -1,9 +1,6 @@
 from file_manager.file_manager import FileManager
 from Field.field import Field
 
-a = FileManager('bla')
-environment = Field()
-a.upload_data(environment)
 
 if __name__ == '__main__':
     print('How would you like to start: ')
@@ -11,6 +8,7 @@ if __name__ == '__main__':
     print('2: Previous simulation.')
     while True:
         choice = input('Youre choice:')
+        environment: list
         match choice:
             case '1':
                 file_manager = FileManager('Field/environment.txt')
@@ -22,4 +20,4 @@ if __name__ == '__main__':
                 break
             case _:
                 print('Try to choose once again)')
-
+    field = Field(environment)
