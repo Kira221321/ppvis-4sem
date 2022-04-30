@@ -18,7 +18,7 @@ class FileManager:
     def load_data_from_previous_simulation(self):
         try:
             with open('Field/field.pickle', 'rb') as file:
-                pickle.load(file)
+                return pickle.load(file)
         except FileNotFoundError:
             print('There is no such file!')
 
