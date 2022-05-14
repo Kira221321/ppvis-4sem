@@ -57,7 +57,6 @@ class Plant:
                 self.reproduce()
             self._life_cycle = True
             self._health -= 5
-            print(self._health)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         else:
             self.dying()
 

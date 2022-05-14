@@ -67,7 +67,6 @@ class Dinosaur(ABC):
     def eat(self, creatures_around, prey):
         for creature in creatures_around:
             if creature.type == prey:
-                print(creature)
                 victim_place_x, victim_place_y = creature.x_position, creature.y_position
                 self._field.environment[victim_place_x][victim_place_y] = self
                 self._field.environment[self.x_position][self.y_position] = None
@@ -157,7 +156,6 @@ class Brontosaurus(Dinosaur):
                 self._hunger += 1
             self._life_cycle = True
             self._health -= 2
-            print(self._health)
         else:
             self.dying()
 
@@ -195,7 +193,6 @@ class Stegosaurus(Dinosaur):
                 self._hunger += 1
             self._life_cycle = True
             self._health -= 2
-            print(self._health)
         else:
             self.dying()
 
@@ -235,7 +232,6 @@ class Trex(Dinosaur):
                 self._hunger += 1
             self._life_cycle = True
             self._health -= 2
-            print(self._health)
         else:
             self.dying()
 

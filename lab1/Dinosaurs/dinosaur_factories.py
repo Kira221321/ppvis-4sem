@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
 from random import choice
-
-import Figit addeld
 from .dinosaurs import Trex, Brontosaurus, Stegosaurus
-
+import Field
 
 class DinosaurFactory(ABC):
 
