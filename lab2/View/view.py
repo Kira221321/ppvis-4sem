@@ -26,13 +26,12 @@ BLUE = [0, 0, 1, 1]
 WHITE_BLUE = [0, 1, 1, 1]
 GRAY = [1, 1, 1, 1]
 
-db_controller = None
-
 
 class MenuScreen(Screen):
-    def __init__(self, **kw):
+    def __init__(self, db_controller, file, **kw):
         super(MenuScreen, self).__init__(**kw)
         self._controller = db_controller
+        self.file = file
 
         box_layout = BoxLayout(orientation="vertical")
         menu_label = Label(text="Menu", font_size=30)
@@ -52,12 +51,12 @@ class MenuScreen(Screen):
         self.add_widget(box_layout)
 
     def exit_program(self):
-        self._controller.write_data_into_file()
+        self._controller.write_data_into_file(self.file)
         raise SystemExit
 
 
 class AddScreen(Screen):
-    def __init__(self, **kw):
+    def __init__(self, db_controller, **kw):
         super(AddScreen, self).__init__(**kw)
 
         self._controller = db_controller
@@ -253,7 +252,7 @@ class AddScreen(Screen):
 
 
 class RemoveScreen(Screen):
-    def __init__(self, **kw):
+    def __init__(self, db_controller, **kw):
         super(RemoveScreen, self).__init__(**kw)
         self._controller = db_controller
         self.choice = 0
@@ -345,7 +344,7 @@ class RemoveScreen(Screen):
                             self.remove_input.background_color = RED
                             return
                 if is_removed:
-                    self.menu_label.text = "Remove complete!"
+                    self.menu_label.text = f"Remove complete! {is_removed} student was deleted"
                 else:
                     self.menu_label.text = "No such records!"
                 self.remove_input.background_color = GRAY
@@ -358,7 +357,7 @@ class RemoveScreen(Screen):
 class ShowScreen(Screen):
     fields_on_screens = 5
 
-    def __init__(self, **kw):
+    def __init__(self, db_controller, **kw):
         super(ShowScreen, self).__init__(**kw)
         self.list_of_screens = []
         self.index_of_screen = 0
@@ -711,8 +710,10 @@ class ChooseFile(Screen):
                                        newl='\n')
                 dom_tree.unlink()
                 self.lib_was_chosen = True
-                global db_controller
-                db_controller = DataBaseController(file)
+                self.db_controller = DataBaseController()
+                self.db_controller.read_from_file(file)
+                self.file = file
+
                 create_button.background_color = GREEN
                 create_button.text = "Library selected"
             else:
@@ -728,8 +729,7 @@ class ChooseFile(Screen):
             button.background_color = GRAY
         if self.file_search_input.text in os.listdir("."):
             self.lib_was_chosen = True
-            global db_controller
-            db_controller = DataBaseController(file)
+            self.db_controller = DataBaseController(file)
             choice_button.background_color = GREEN
             choice_button.text = "Library selected"
         else:
@@ -741,16 +741,16 @@ class ChooseFile(Screen):
         for button in self.file_buttons:
             button.background_color = GRAY
         self.file = "./" + choice_button.text
-        global db_controller
-        db_controller = DataBaseController(self.file)
+        self.db_controller = DataBaseController()
+        self.db_controller.read_from_file(self.file)
         choice_button.background_color = GREEN
 
     def create_menu(self):
         if self.lib_was_chosen:
-            screen_manager.add_widget(MenuScreen(name="menu"))
-            screen_manager.add_widget(AddScreen(name="add"))
-            screen_manager.add_widget(RemoveScreen(name="remove"))
-            screen_manager.add_widget(ShowScreen(name="show"))
+            screen_manager.add_widget(MenuScreen(self.db_controller, self.file, name="menu"))
+            screen_manager.add_widget(AddScreen(self.db_controller, name="add"))
+            screen_manager.add_widget(RemoveScreen(self.db_controller, name="remove"))
+            screen_manager.add_widget(ShowScreen(self.db_controller, name="show"))
             set_screen("menu")
 
 

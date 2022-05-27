@@ -110,3 +110,4 @@ class Writer:
                                addindent="  ",
                                newl='\n')
         self.dom_tree.unlink()
+

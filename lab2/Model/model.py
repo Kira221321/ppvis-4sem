@@ -17,3 +17,11 @@ class Student:
     sem_8: int = 0
     sem_9: int = 0
     sem_10: int = 0
+
+
+class StudentsStorage:
+    def __init__(self):
+        self.storage = list()
+
+    def add(self, student):
+        self.storage.append(student)
