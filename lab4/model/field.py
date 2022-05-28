@@ -49,9 +49,6 @@ class Field:
     def environment(self):
         return self._environment
 
-    def get_creatures_around(self):
-        pass
-
     def is_place_empty(self, x, y):
         return self._environment[x][y] is None
 
