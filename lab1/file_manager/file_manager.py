@@ -2,13 +2,11 @@ import pickle
 
 
 class FileManager:
-    def __init__(self, my_file):
-        self.file = my_file
 
     def load_data_from_template_file(self):
         try:
             data_saver = list()
-            with open(self.file, 'r') as file:
+            with open('Field/environment.txt', 'r') as file:
                 for line in file:
                     data_saver.append(line.split())
             return data_saver
