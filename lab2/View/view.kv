@@ -1,0 +1,283 @@
+#:kivy 2.1.0
+
+<ChooseFile>:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            Button:
+                text: "Create library"
+                font_size: 48
+            TextInput:
+        Button:
+            text: "Set Library"
+            font_size: 48
+            on_press:
+                app.screen_manager.current = 'menu'
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Menu"
+            font_size: 30
+        Button:
+            text: "Add"
+            font_size: 30
+            on_press:
+                app.screen_manager.current = 'add'
+        Button:
+            text: "Delete"
+            font_size: 30
+            on_press:
+                app.screen_manager.current = 'remove'
+        Button:
+            text: "Show"
+            font_size: 30
+            on_press:
+                app.screen_manager.current = 'show'
+        Button:
+            text: "Exit"
+            font_size: 30
+            on_press:
+                app.exit_program()
+
+
+<AddScreen>:
+    GridLayout:
+        cols: 2
+        Button:
+            text: "Student"
+            background_color: 0, 1, 1, 1
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Name"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "Last name"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "Patronymic"
+                background_color: 0, 1, 1, 1
+            TextInput:
+            TextInput:
+            TextInput:
+        Button:
+            text: "Group"
+            background_color: 0, 1, 1, 1
+        TextInput:
+        Button:
+            text: "Social work"
+            background_color: 0, 1, 1, 1
+        GridLayout:
+            cols: 10
+            Button:
+                text: "sem1"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem2"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem3"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem4"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem5"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem6"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem7"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem8"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem9"
+                background_color: 0, 1, 1, 1
+            Button:
+                text: "sem10"
+                background_color: 0, 1, 1, 1
+            TextInput:
+                id: "sem1"
+            TextInput:
+                id: "sem2"
+            TextInput:
+                id: "sem3"
+            TextInput:
+                id: "sem4"
+            TextInput:
+                id: "sem5"
+            TextInput:
+                id: "sem6"
+            TextInput:
+                id: "sem7"
+            TextInput:
+                id: "sem8"
+            TextInput:
+                id: "sem9"
+            TextInput:
+                id: "sem10"
+        Button:
+            text: "Status"
+            background_color: 0, 1, 1, 1
+        Button:
+            id: status
+        Button:
+            text: "<-Back"
+            background_color: 0, 0, 1, 1
+            on_press:
+                app.screen_manager.current = 'menu'
+        Button:
+            text: "Create->"
+            background_color: 0, 0, 1, 1
+            on_press:
+                app.screen_manager.current = 'menu'
+
+
+<RemoveScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Deleting by"
+        Button:
+            text: "Student last name"
+            font_size: 30
+        Button:
+            text: "Group"
+            font_size: 30
+        Button:
+            text: "Student last name and work amount"
+            font_size: 30
+        Button:
+            text: "Group and work amount"
+            font_size: 30
+        TextInput:
+            id: remove
+        BoxLayout:
+            Button:
+                text: "<-Back"
+                background_color: 0, 0, 1, 1
+                on_press:
+                    app.screen_manager.current = 'menu'
+            Button:
+                text: "Remove->"
+                background_color: 0, 0, 1, 1
+                on_press:
+                    app.screen_manager.current = 'menu'
+
+
+<ShowScreen>:
+    GridLayout
+        cols: 2
+        padding: 0, 0, 0, 80
+        row_force_default: True
+        row_default_height: 50
+        Button:
+            text: "Search by student last name"
+        TextInput:
+            id: "last_name"
+        Button:
+            text: "Search by group"
+        TextInput:
+            id: "group"
+        Button:
+            text: "Search by student surname and work"
+        TextInput:
+            id: "name_and_work"
+        Button:
+            text: "Search by group and work"
+        TextInput:
+            id: "group_and_work"
+        Button:
+            text: "ALL"
+        Button:
+            text: "SEARCH"
+        Button:
+            text: "Amount of records on page"
+        TextInput:
+            id: "amount"
+    GridLayout:
+        cols: 12
+        padding: 0, 300, 0, 360
+        Button:
+            text: "Student"
+            size_hint_x: None
+            width: 200
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "group"
+            size_hint_x: None
+            width: 100
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_1"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_2"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_3"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_4"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_5"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_6"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_7"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_8"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_9"
+            background_color: 0, 1, 0, 1
+        Button:
+            text: "sem_10"
+            background_color: 0, 1, 0, 1
+    BoxLayout:
+        padding: 0, 640, 0, 0
+        Button:
+            text: "<-Back"
+            background_color: 0, 0, 1, 1
+            on_press:
+                app.screen_manager.current = 'menu'
+        Button:
+            text: "First page"
+            background_color: 0, 0, 1, 1
+        Button:
+            text: "Past page"
+            background_color: 0, 0, 1, 1
+        Button:
+            text: "Next page"
+            background_color: 0, 0, 1, 1
+        Button:
+            text: "Last page"
+            background_color: 0, 0, 1, 1
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "№ page"
+            Button:
+                text: "0"
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Count pages"
+            Button:
+                text: "0"
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Count el"
+            Button:
+                text: "0"
+        

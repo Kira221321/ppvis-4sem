@@ -1,0 +1,59 @@
+#:kivy 2.1.0
+
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "Previous Simulation"
+            font_size: 30
+            background_color: 0, 1, 1, 1
+            on_press:
+                app.start_simulation()
+        Button:
+            text: "Template Simulation"
+            font_size: 30
+            background_color: 0, 1, 1, 1
+            on_press:
+                app.start_simulation()
+                app.screen_manager.current = 'simulation'
+        Button:
+            text: "Exit"
+            background_color: 0, 1, 1, 1
+            font_size: 30
+            on_press:
+                app.exit_program()
+
+
+<SimulationInterface>:
+    GridLayout:
+        cols: 2
+        padding: 650, 600, 0, 0
+        Button:
+            text: "Add New Animal"
+            background_color: 1, 1, 0, 1
+        BoxLayout:
+            TextInput:
+                id: creature
+            TextInput:
+                id: x_coord
+            TextInput:
+                id: y_coord
+        Button:
+            text: "Delete Animal"
+            background_color: 1, 1, 0, 1
+        BoxLayout:
+            TextInput:
+                id: creature_d
+            TextInput:
+                id: x_coord_d
+            TextInput:
+                id: y_coord_d
+        Button:
+            text: "quit"
+            background_color: 1, 1, 0, 1
+            on_press:
+                app.exit_program()
+        Button:
+            text: "continue"
+            background_color: 1, 1, 0, 1
